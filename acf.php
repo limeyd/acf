@@ -805,7 +805,11 @@ class acf
 					echo '<label for="' . $field['id'] . '">' . $field['label'] . $required_label . '</label>';
 					echo $field['instructions'];
 				echo '</p>';
-				
+        
+        // Add access to the field by name 
+        // example: val = $_POST['fields'][$_POST['acf_field_names']['first_name']];
+        echo '<input type="hidden" value="'.$field['key'].'" name="acf_field_names['.$field['name'].']">';
+
 				$field['name'] = 'fields[' . $field['key'] . ']';
 				do_action('acf/create_field', $field, $post_id);
 			
